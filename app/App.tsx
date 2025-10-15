@@ -25,7 +25,7 @@ export default function App() {
   <main className="flex min-h-screen flex-col items-center justify-between bg-slate-100 dark:bg-slate-950 py-8">
       {/* --- HEADER ORIA --- */}
       <header className="flex flex-col items-center justify-center mb-6">
-        <Image src="/oria-logo.png" alt="OrIA" width={80} height={80} className="mb-3" />
+       
         <h1 className="text-2xl font-semibold text-emerald-500">
           OrIA
         </h1>
