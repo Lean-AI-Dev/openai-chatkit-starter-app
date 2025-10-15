@@ -3,6 +3,8 @@
 import { useCallback } from "react";
 import { ChatKitPanel, type FactAction } from "@/components/ChatKitPanel";
 import { useColorScheme } from "@/hooks/useColorScheme";
+import { Image } from "next/image";
+
 
 export default function App() {
   const { scheme, setScheme } = useColorScheme();
@@ -23,13 +25,9 @@ export default function App() {
   <main className="flex min-h-screen flex-col items-center justify-between bg-slate-100 dark:bg-slate-950 py-8">
       {/* --- HEADER ORIA --- */}
       <header className="flex flex-col items-center justify-center mb-6">
-        <img
-          src="/oria-logo.png"
-          alt="OrIA Logo"
-          className="w-20 h-20 mb-3"
-        />
+        <Image src="/oria-logo.png" alt="OrIA" width={80} height={80} className="mb-3" />
         <h1 className="text-2xl font-semibold text-emerald-500">
-          OrIA – Lean IA Copilot
+          OrIA
         </h1>
         <p className="text-slate-500 dark:text-slate-400 text-sm">
           Analyse de flux, VSM et performance en temps réel
