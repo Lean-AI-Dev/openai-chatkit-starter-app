@@ -1,5 +1,5 @@
 "use client";
-import { ChatKit } from "@openai/chatkit-js";
+import { Chat } from "@openai/chatkit-react";
 
 export default function App() {
   return (
@@ -37,28 +37,13 @@ export default function App() {
           maxWidth: "700px",
         }}
       >
-        <ChatKit
+        <Chat
+          // Clés publiques et workflow OpenAI
+          apiKey={process.env.NEXT_PUBLIC_CHATKIT_DOMAIN_PUBLIC_KEY!}
           workflowId={process.env.NEXT_PUBLIC_CHATKIT_WORKFLOW_ID!}
-          domainPublicKey={process.env.NEXT_PUBLIC_CHATKIT_DOMAIN_PUBLIC_KEY!}
-          sessionEndpoint={
-            process.env.NEXT_PUBLIC_CHATKIT_SESSION_ENDPOINT ??
-            "/api/create-session"
-          }
-          messages={{
-            inputPlaceholder: "Posez votre question Lean / VSM...",
-            sendButtonLabel: "Envoyer",
-          }}
-          quickActions={[
-            { label: "Analyser un VSM", value: "Run VSM analysis" },
-            { label: "Calcul VA / BVA / NVA", value: "Compute VA/BVA/NVA" },
-            { label: "Identifier le bottleneck", value: "Find bottleneck" },
-          ]}
-          theme={{
-            mode: "dark",
-            brandColor: "#12B886",
-            backgroundColor: "#102B2A",
-            textColor: "#E6F8F4",
-          }}
+          // Apparence
+          theme="dark"
+          placeholder="Posez votre question Lean / VSM..."
         />
       </div>
     </main>
