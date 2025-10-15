@@ -10,11 +10,11 @@
   },
   "dependencies": {
   "@openai/chatkit-react": ">=1.1.1 <2.0.0",
-  "@openai/chatkit-js": "latest",
   "next": "^15.5.4",
   "react": "^19.2.0",
   "react-dom": "^19.2.0"
 }
+
 ,
   "optionalDependencies": {
     "lightningcss-linux-x64-gnu": "1.30.1",
