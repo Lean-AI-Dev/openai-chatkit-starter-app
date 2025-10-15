@@ -37,7 +37,7 @@ export default function App() {
           maxWidth: "700px",
         }}
       >
-        <Chat
+        <Chatkit
           // Clés publiques et workflow OpenAI
           apiKey={process.env.NEXT_PUBLIC_CHATKIT_DOMAIN_PUBLIC_KEY!}
           workflowId={process.env.NEXT_PUBLIC_CHATKIT_WORKFLOW_ID!}
