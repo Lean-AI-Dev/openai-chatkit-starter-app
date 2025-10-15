@@ -16,7 +16,7 @@ export default function App() {
       }}
     >
       <img
-        src="/oria-logo.png"
+        src="/orIA-logo.png"
         alt="OrIA"
         style={{ width: "80px", marginBottom: "1rem" }}
       />
