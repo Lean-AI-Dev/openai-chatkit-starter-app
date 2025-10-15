@@ -1,5 +1,5 @@
 "use client";
-import { Chat } from "@openai/chatkit-react";
+import { ChatKit } from "@openai/chatkit-react";
 
 export default function App() {
   return (
