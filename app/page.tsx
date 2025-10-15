@@ -78,6 +78,3 @@ export default function Home() {
     </main>
   );
 }
-return <App />;
-}"use client";
-import { ChatKit } from "@openai/chatkit-js";
