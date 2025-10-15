@@ -3,7 +3,7 @@
 import { useCallback } from "react";
 import { ChatKitPanel, type FactAction } from "@/components/ChatKitPanel";
 import { useColorScheme } from "@/hooks/useColorScheme";
-import { Image } from "next/image";
+
 
 
 export default function App() {
