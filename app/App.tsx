@@ -3,6 +3,8 @@
 import { useCallback } from "react";
 import { ChatKitPanel, type FactAction } from "@/components/ChatKitPanel";
 import { useColorScheme } from "@/hooks/useColorScheme";
+import { options } from "./chatkit.config";
+
 
 
 export default function App() {
@@ -34,6 +36,7 @@ export default function App() {
       </header>
       <div className="mx-auto w-full max-w-5xl">
         <ChatKitPanel
+          options={options}
           theme={scheme}
           onWidgetAction={handleWidgetAction}
           onResponseEnd={handleResponseEnd}
