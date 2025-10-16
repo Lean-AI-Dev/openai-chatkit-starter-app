@@ -9,7 +9,7 @@ export const STARTER_PROMPTS: StartScreenPrompt[] = [
   {
     label: "Analyse mon Process",
     prompt: "Analyse mon Process",
-    icon: "chart-line",
+    icon: "circle",
   },
 ];
 
