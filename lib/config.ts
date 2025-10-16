@@ -11,12 +11,12 @@ export const STARTER_PROMPTS: StartScreenPrompt[] = [
   {
     label: "Analyser un Process VSM",
     prompt: "Analyse ce process VSM et identifie les goulots d'étranglement.",
-    icon: "star",
+    icon: "chart-bar",
   },
   {
     label: "Calculer VA / BVA / NVA",
     prompt: "Calcule la répartition des temps de valeur ajoutée, BVA et NVA.",
-    icon: "clock",
+    icon: "rocket",
   },
   {
     label: "Proposer une amélioration TO-BE",
