@@ -13,16 +13,6 @@ export const STARTER_PROMPTS: StartScreenPrompt[] = [
     prompt: "Analyse ce Value Stream Mapping, calcule l'efficience et identifie les goulots d'étranglement.",
     icon: "lightbulb",
   },
-  {
-    label: "Analyse ce Process",
-    prompt: "Lance l'analyse détaillée de ce processus",
-    icon: "star",
-  },
-  {
-    label: "Proposer une amélioration TO-BE",
-    prompt: "Propose une version optimisée du process avec les gains attendus.",
-    icon: "star",
-  },
 ];
 
 // ✏️ Placeholder du champ d’entrée
@@ -34,12 +24,7 @@ export const GREETING = "Que souhaitez-vous qu’OrIA éclaire aujourd’hui ? �
 // 🎨 Thème visuel OrIA (cyan, clair/sombre dynamique)
 export const getThemeConfig = (theme: ColorScheme): ThemeOption => ({
   color: {
-    grayscale: {
-      hue: 194, // teinte bleu-vert
-      tint: 5,
-      shade: theme === "dark" ? -2 : -4,
-    },
-    accent: {
+     accent: {
       primary: "#5dbce5", 
       level: 1,
     },
