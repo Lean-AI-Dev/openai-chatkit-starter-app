@@ -1,35 +1,59 @@
 import { ColorScheme, StartScreenPrompt, ThemeOption } from "@openai/chatkit";
 
+// 🔑 Identifiants (inchangés)
 export const WORKFLOW_ID =
   process.env.NEXT_PUBLIC_CHATKIT_WORKFLOW_ID?.trim() ?? "";
 
 export const CREATE_SESSION_ENDPOINT = "/api/create-session";
 
+// 💬 Prompts d’accueil personnalisés OrIA
 export const STARTER_PROMPTS: StartScreenPrompt[] = [
   {
-    label: "Analyse mon Process",
-    prompt: "Analyse mon Process",
-    icon: "circle",
+    label: "Analyser un Process VSM",
+    prompt: "Analyse ce process VSM et identifie les goulots d'étranglement.",
+    icon: "star",
+  },
+  {
+    label: "Calculer VA / BVA / NVA",
+    prompt: "Calcule la répartition des temps de valeur ajoutée, BVA et NVA.",
+    icon: "clock",
+  },
+  {
+    label: "Proposer une amélioration TO-BE",
+    prompt: "Propose une version optimisée du process avec les gains attendus.",
+    icon: "star",
   },
 ];
 
-export const PLACEHOLDER_INPUT = "Ask anything...";
+// ✏️ Placeholder du champ d’entrée
+export const PLACEHOLDER_INPUT = "Explique-moi ton process Lean...";
 
-export const GREETING = "Quels sont les défis à relever ?";
+// 👋 Message de bienvenue
+export const GREETING = "👋 Bonjour, je suis OrIA – ton copilote Lean IA.";
 
+// 🎨 Thème visuel OrIA (cyan, clair/sombre dynamique)
 export const getThemeConfig = (theme: ColorScheme): ThemeOption => ({
   color: {
     grayscale: {
-      hue: 220,
-      tint: 6,
-      shade: theme === "dark" ? -1 : -4,
+      hue: 194, // teinte bleu-vert
+      tint: 5,
+      shade: theme === "dark" ? -2 : -5,
     },
     accent: {
-      primary: theme === "dark" ? "#f1f5f9" : "#0f172a",
-      level: 1,
+      primary: "#00FFFF", // cyan OrIA
+      level: 2,
+    },
+    surface: {
+      background: theme === "dark" ? "#0B1220" : "#92bfce",
+      foreground: theme === "dark" ? "#E6F8FF" : "#0f172a",
     },
   },
-  radius: "round",
-  // Add other theme options here
-  // chatkit.studio/playground to explore config options
+  radius: "pill",
+  typography: {
+    baseSize: 16,
+    fontFamily:
+      '"OpenAI Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+    fontFamilyMono:
+      'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+  },
 });
