@@ -2,75 +2,78 @@ import type { ChatKitOptions } from "@openai/chatkit";
 
 export const options: ChatKitOptions = {
   api: {
-    // TODO: configure your ChatKit API integration (URL, auth, uploads).
+    type: "hosted",
+    baseUrl: "https://api.openai.com/v1",
   },
   theme: {
-    colorScheme: 'light',
-    radius: 'pill',
-    density: 'normal',
+    colorScheme: "light",
+    radius: "pill",
+    density: "normal",
     color: {
       grayscale: {
         hue: 194,
-        tint: 5
+        tint: 5,
       },
       accent: {
-        primary: '#00FFFF',
-        level: 2
+        primary: "#00FFFF",
+        level: 2,
       },
       surface: {
-        background: '#92bfce',
-        foreground: '#d2d8da'
-      }
+        background: "#92bfce",
+        foreground: "#d2d8da",
+      },
     },
     typography: {
       baseSize: 16,
-      fontFamily: '"OpenAI Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif',
-      fontFamilyMono: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "DejaVu Sans Mono", "Courier New", monospace',
+      fontFamily:
+        '"OpenAI Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif',
+      fontFamilyMono:
+        'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "DejaVu Sans Mono", "Courier New", monospace',
       fontSources: [
         {
-          family: 'OpenAI Sans',
-          src: 'https://cdn.openai.com/common/fonts/openai-sans/v2/OpenAISans-Regular.woff2',
+          family: "OpenAI Sans",
+          src: "https://cdn.openai.com/common/fonts/openai-sans/v2/OpenAISans-Regular.woff2",
           weight: 400,
-          style: 'normal',
-          display: 'swap'
-        }
-      ]
-    }
+          style: "normal",
+          display: "swap",
+        },
+      ],
+    },
   },
   composer: {
-    placeholder: 'Coucou',
+    placeholder: "Coucou",
     attachments: {
       enabled: true,
       maxCount: 5,
-      maxSize: 10485760
+      maxSize: 10485760,
     },
     tools: [
       {
-        id: 'search_docs',
-        label: 'Lean6Sigma',
-        shortLabel: 'L6S',
-        placeholderOverride: 'Search documentation',
-        icon: 'chart',
-        pinned: false
-      }
+        id: "search_docs",
+        label: "Lean6Sigma",
+        shortLabel: "L6S",
+        placeholderOverride: "Search documentation",
+        icon: "chart",
+        pinned: false,
+      },
     ],
     models: [
       {
-        id: 'gpt-5',
-        label: 'gpt-5',
-        description: 'Balanced intelligence',
-        default: true
-      }
+        id: "gpt-5",
+        label: "gpt-5",
+        description: "Balanced intelligence",
+        default: true,
+      },
     ],
   },
   startScreen: {
-    greeting: 'Quel est le Process à Analyser ?',
+    greeting: "Quel est le Process à Analyser ?",
     prompts: [
       {
-        icon: 'circle-question',
-        label: 'What is ChatKit?',
-        prompt: 'What is ChatKit and what does it do?'
-      }
+        icon: "circle-question",
+        label: "What is ChatKit?",
+        prompt: "What is ChatKit and what does it do?",
+      },
     ],
   },
 };
