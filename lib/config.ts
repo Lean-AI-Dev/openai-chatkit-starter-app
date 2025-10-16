@@ -19,7 +19,7 @@ export const getThemeConfig = (theme: ColorScheme): ThemeOption => ({
     },
   },
   typography: {
-    baseSize: 16 as 16, // ✅ Cast pour correspondre à la définition (16 | 14 | 15 | 17 | 18)
+    baseSize: 16,
     fontFamily:
       '"OpenAI Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
     fontFamilyMono:
