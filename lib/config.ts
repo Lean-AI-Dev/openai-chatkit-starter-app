@@ -1,4 +1,4 @@
-import { ColorScheme, ThemeOption } from "@openai/chatkit";
+import { ColorScheme, ThemeOption, ChatKitIcon } from "@openai/chatkit";
 // 🔑 Identifiants (inchangés)
 export const WORKFLOW_ID =
   process.env.NEXT_PUBLIC_CHATKIT_WORKFLOW_ID?.trim() ?? "";
@@ -36,12 +36,12 @@ export const ORIA_FULL_CONFIG = {
         label: "Analyse cette VSM",
         prompt:
           "Analyse ce Value Stream Mapping, calcule l'efficience et identifie les goulots d'étranglement.",
-        icon: "lightbulb",
+       icon: "lightbulb" as ChatKitIcon,
       },
       {
         label: "Analyse ce Processus",
         prompt: "Lance l'analyse détaillée de ce processus.",
-        icon: "star",
+        icon: "star" as ChatKitIcon,
       },
     ],
   },
