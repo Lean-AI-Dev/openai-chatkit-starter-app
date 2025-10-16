@@ -33,7 +33,6 @@ export default function App() {
       </header>
       <div className="mx-auto w-full max-w-5xl">
         <ChatKitPanel
-          options={options}
           theme={scheme}
           onWidgetAction={handleWidgetAction}
           onResponseEnd={handleResponseEnd}
