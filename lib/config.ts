@@ -26,6 +26,12 @@ const options: ChatKitOptions = {
     prompt: "Propose une version optimisée du process avec les gains attendus.",
     icon: "star",
   },  
+  // ✏️ Placeholder du champ d’entrée
+export const PLACEHOLDER_INPUT = "Explique-moi ton process Lean...";
+
+// 👋 Message de bienvenue
+export const GREETING = "👋 Bonjour, je suis OrIA – ton copilote Lean IA.";
+export function getThemeConfig()
   theme: {
     colorScheme: 'light',
     radius: 'pill',
