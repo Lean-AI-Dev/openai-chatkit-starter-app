@@ -28,7 +28,6 @@ export const GREETING = " Que souhaitez-vous qu’OrIA éclaire aujourd’hui ? 
 
 // 🎨 Thème visuel OrIA (cyan, clair/sombre dynamique)
 export const getThemeConfig = (theme: ColorScheme): ThemeOption => ({
-  theme: {
     colorScheme: 'light',
     radius: 'pill',
     density: 'normal',
@@ -40,8 +39,7 @@ export const getThemeConfig = (theme: ColorScheme): ThemeOption => ({
       surface: {
         background: '#fcfcfc',
         foreground: '#f2f2f2'
-      },
-    },
+     },
   },
   typography: {
     baseSize: 16,
