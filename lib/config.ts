@@ -16,7 +16,7 @@ export const STARTER_PROMPTS: StartScreenPrompt[] = [
   {
     label: "Calculer VA / BVA / NVA",
     prompt: "Calcule la répartition des temps de valeur ajoutée, BVA et NVA.",
-    icon: "gear",
+    icon: "star",
   },
   {
     label: "Proposer une amélioration TO-BE",
