@@ -9,7 +9,7 @@ export const CREATE_SESSION_ENDPOINT = "/api/create-session";
 // 💬 Prompts d’accueil personnalisés OrIA
 export const STARTER_PROMPTS: StartScreenPrompt[] = [
   {
-    label: "Analyser un Process VSM",
+    label: "Analyser une VSM",
     prompt: "Analyse ce process VSM et identifie les goulots d'étranglement.",
     icon: "lightbulb",
   },
