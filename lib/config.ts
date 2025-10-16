@@ -12,7 +12,7 @@ export const STARTER_PROMPTS: StartScreenPrompt[] = [
     label: "Analyser une VSM",
     prompt:
       "Analyse ce Value Stream Mapping et identifie les goulots d'étranglement.",
-    icon: "chart-mixed", // 🟢 icône valide (ChatKitIcon)
+    icon: "chart-bar", // 🟢 icône valide (ChatKitIcon)
   },
   {
     label: "Optimiser un processus",
