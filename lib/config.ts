@@ -10,6 +10,22 @@ const options: ChatKitOptions = {
   api: {
     // TODO: configure your ChatKit API integration (URL, auth, uploads).
   },
+  export const STARTER_PROMPTS: StartScreenPrompt[] = [
+  {
+    label: "Analyser une VSM",
+    prompt: "Analyse ce process VSM et identifie les goulots d'étranglement.",
+    icon: "lightbulb",
+  },
+  {
+    label: "Calculer VA / BVA / NVA",
+    prompt: "Calcule la répartition des temps de valeur ajoutée, BVA et NVA.",
+    icon: "star",
+  },
+  {
+    label: "Proposer une amélioration TO-BE",
+    prompt: "Propose une version optimisée du process avec les gains attendus.",
+    icon: "star",
+  },  
   theme: {
     colorScheme: 'light',
     radius: 'pill',
