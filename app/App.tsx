@@ -24,7 +24,7 @@ export default function App() {
       {/* --- HEADER LOGO ORIA --- */}
       <header className="flex flex-col items-center justify-center mb-6">
         <img
-          src="/logo_oria.png"
+          src="/orIA-logo.png"
           alt="Logo OrIA"
           className="h-20 w-20 rounded-full shadow-md"
         />
