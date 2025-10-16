@@ -1,6 +1,7 @@
 import { WORKFLOW_ID } from "@/lib/config";
 
-//export const runtime = "edge";
+// Retirez cette ligne pour utiliser le runtime Node.js
+// export const runtime = "edge";
 
 interface CreateSessionRequestBody {
   workflow?: { id?: string | null } | null;
@@ -21,10 +22,23 @@ export async function POST(request: Request): Promise<Response> {
   if (request.method !== "POST") {
     return methodNotAllowedResponse();
   }
+  
   let sessionCookie: string | null = null;
+  
   try {
     const openaiApiKey = process.env.OPENAI_API_KEY;
+    
+    // Ajout de logs pour le debugging
+    if (process.env.NODE_ENV !== "production") {
+      console.log("[create-session] Environment check", {
+        hasApiKey: !!openaiApiKey,
+        workflowId: WORKFLOW_ID,
+        nodeEnv: process.env.NODE_ENV
+      });
+    }
+    
     if (!openaiApiKey) {
+      console.error("[create-session] Missing OPENAI_API_KEY");
       return new Response(
         JSON.stringify({
           error: "Missing OPENAI_API_KEY environment variable",
@@ -46,7 +60,7 @@ export async function POST(request: Request): Promise<Response> {
     if (process.env.NODE_ENV !== "production") {
       console.info("[create-session] handling request", {
         resolvedWorkflowId,
-        body: JSON.stringify(parsedBody),
+        hasBody: !!parsedBody,
       });
     }
 
@@ -61,6 +75,9 @@ export async function POST(request: Request): Promise<Response> {
 
     const apiBase = process.env.CHATKIT_API_BASE ?? DEFAULT_CHATKIT_BASE;
     const url = `${apiBase}/v1/chatkit/sessions`;
+    
+    console.log("[create-session] Making request to OpenAI", { url });
+    
     const upstreamResponse = await fetch(url, {
       method: "POST",
       headers: {
@@ -80,12 +97,10 @@ export async function POST(request: Request): Promise<Response> {
       }),
     });
 
-    if (process.env.NODE_ENV !== "production") {
-      console.info("[create-session] upstream response", {
-        status: upstreamResponse.status,
-        statusText: upstreamResponse.statusText,
-      });
-    }
+    console.log("[create-session] Response received", {
+      status: upstreamResponse.status,
+      statusText: upstreamResponse.statusText,
+    });
 
     const upstreamJson = (await upstreamResponse.json().catch(() => ({}))) as
       | Record<string, unknown>
@@ -127,7 +142,10 @@ export async function POST(request: Request): Promise<Response> {
   } catch (error) {
     console.error("Create session error", error);
     return buildJsonResponse(
-      { error: "Unexpected error" },
+      { 
+        error: "Unexpected error",
+        message: error instanceof Error ? error.message : "Unknown error"
+      },
       500,
       { "Content-Type": "application/json" },
       sessionCookie
