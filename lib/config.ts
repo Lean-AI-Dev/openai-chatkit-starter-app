@@ -27,7 +27,7 @@ export const getThemeConfig = (theme: ColorScheme): ThemeOption => ({
   },
 });
 
-/ 🧠 Configuration complète OrIA (non typée ThemeOption)
+// 🧠 Configuration complète OrIA (non typée ThemeOption)
 export const ORIA_FULL_CONFIG = {
   startScreen: {
     greeting: "Que souhaitez-vous qu’OrIA éclaire aujourd’hui ? ✨",
