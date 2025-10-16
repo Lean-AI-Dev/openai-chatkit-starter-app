@@ -5,12 +5,7 @@ export const WORKFLOW_ID =
   process.env.NEXT_PUBLIC_CHATKIT_WORKFLOW_ID?.trim() ?? "";
 
 export const CREATE_SESSION_ENDPOINT = "/api/create-session";
-
-const options: ChatKitOptions = {
-  api: {
-    // TODO: configure your ChatKit API integration (URL, auth, uploads).
-  },
-  export const STARTER_PROMPTS: StartScreenPrompt[] = [
+ export const STARTER_PROMPTS: StartScreenPrompt[] = [
   {
     label: "Analyser une VSM",
     prompt: "Analyse ce process VSM et identifie les goulots d'étranglement.",
@@ -32,6 +27,12 @@ export const PLACEHOLDER_INPUT = "Explique-moi ton process Lean...";
 // 👋 Message de bienvenue
 export const GREETING = "👋 Bonjour, je suis OrIA – ton copilote Lean IA.";
 export function getThemeConfig()
+
+const options: ChatKitOptions = {
+  api: {
+    // TODO: configure your ChatKit API integration (URL, auth, uploads).
+  },
+ 
   theme: {
     colorScheme: 'light',
     radius: 'pill',
