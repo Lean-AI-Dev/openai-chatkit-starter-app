@@ -41,6 +41,7 @@ export const getThemeConfig = (theme: ColorScheme): ThemeOption => ({
         background: '#fcfcfc',
         foreground: '#f2f2f2'
       },
+    },
   },
   typography: {
     baseSize: 16,
