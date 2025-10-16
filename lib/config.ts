@@ -26,3 +26,49 @@ export const getThemeConfig = (theme: ColorScheme): ThemeOption => ({
       'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
   },
 });
+
+/ 🧠 Configuration complète OrIA (non typée ThemeOption)
+export const ORIA_FULL_CONFIG = {
+  startScreen: {
+    greeting: "Que souhaitez-vous qu’OrIA éclaire aujourd’hui ? ✨",
+    prompts: [
+      {
+        label: "Analyse cette VSM",
+        prompt:
+          "Analyse ce Value Stream Mapping, calcule l'efficience et identifie les goulots d'étranglement.",
+        icon: "lightbulb",
+      },
+      {
+        label: "Analyse ce Processus",
+        prompt: "Lance l'analyse détaillée de ce processus.",
+        icon: "star",
+      },
+    ],
+  },
+  composer: {
+    placeholder: "🚀 Quel flux OrIA doit-elle optimiser ?",
+    attachments: {
+      enabled: true,
+      maxCount: 5,
+      maxSize: 10485760,
+    },
+    tools: [
+      {
+        id: "search_docs",
+        label: "Lean6Sigma",
+        shortLabel: "L6S",
+        placeholderOverride: "Search documentation",
+        icon: "chart",
+        pinned: false,
+      },
+    ],
+    models: [
+      {
+        id: "gpt-5",
+        label: "gpt-5",
+        description: "Balanced intelligence",
+        default: true,
+      },
+    ],
+  },
+};
