@@ -9,13 +9,13 @@ export const CREATE_SESSION_ENDPOINT = "/api/create-session";
 // 💬 Prompts d’accueil personnalisés OrIA
 export const STARTER_PROMPTS: StartScreenPrompt[] = [
   {
-    label: "Analyser une VSM",
-    prompt: "Analyse ce process VSM et identifie les goulots d'étranglement.",
+    label: "Analyse la VSM VSM",
+    prompt: "Analyse ce Value Stream Mapping, calcule l'efficience et identifie les goulots d'étranglement.",
     icon: "lightbulb",
   },
   {
-    label: "Calculer VA / BVA / NVA",
-    prompt: "Calcule la répartition des temps de valeur ajoutée, BVA et NVA.",
+    label: "Analyse ce Process",
+    prompt: "Lance l'analyse détaillée de ce processus",
     icon: "star",
   },
   {
@@ -26,10 +26,10 @@ export const STARTER_PROMPTS: StartScreenPrompt[] = [
 ];
 
 // ✏️ Placeholder du champ d’entrée
-export const PLACEHOLDER_INPUT = "Explique-moi ton process Lean...";
+export const PLACEHOLDER_INPUT = "🚀 Quel flux OrIA doit-elle optimiser ?";
 
 // 👋 Message de bienvenue
-export const GREETING = "👋 Bonjour, je suis OrIA – ton copilote Lean IA.";
+export const GREETING = "Que souhaitez-vous qu’OrIA éclaire aujourd’hui ? ✨";
 
 // 🎨 Thème visuel OrIA (cyan, clair/sombre dynamique)
 export const getThemeConfig = (theme: ColorScheme): ThemeOption => ({
@@ -40,12 +40,12 @@ export const getThemeConfig = (theme: ColorScheme): ThemeOption => ({
       shade: theme === "dark" ? -2 : -4,
     },
     accent: {
-      primary: "#00FFFF", // cyan OrIA
-      level: 2,
+      primary: "#5dbce5", 
+      level: 1,
     },
     surface: {
-      background: theme === "dark" ? "#0B1220" : "#92bfce",
-      foreground: theme === "dark" ? "#E6F8FF" : "#0f172a",
+      background: theme === "dark" ? "#fcfcfc",
+      foreground: theme === "dark" ? "#f2f2f2",
     },
   },
   radius: "pill",
