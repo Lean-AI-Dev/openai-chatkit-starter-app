@@ -44,8 +44,8 @@ export const getThemeConfig = (theme: ColorScheme): ThemeOption => ({
       level: 1,
     },
     surface: {
-      background: theme === "dark" ? "#fcfcfc",
-      foreground: theme === "dark" ? "#f2f2f2",
+      background: theme === "dark" ? "#fcfcfc": "#92bfce",
+      foreground: theme === "dark" ? "#f2f2f2" : "#0f172a",
     },
   },
   radius: "pill",
