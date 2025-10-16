@@ -1,38 +1,33 @@
-import type { ChatKitOptions } from "@openai/chatkit";
+import { ColorScheme, StartScreenPrompt, ThemeOption } from "@openai/chatkit";
 
 // 🔑 Identifiants (inchangés)
 export const WORKFLOW_ID =
   process.env.NEXT_PUBLIC_CHATKIT_WORKFLOW_ID?.trim() ?? "";
 
 export const CREATE_SESSION_ENDPOINT = "/api/create-session";
- export const STARTER_PROMPTS: StartScreenPrompt[] = [
+
+// 💬 Prompts d’accueil personnalisés OrIA
+export const STARTER_PROMPTS: StartScreenPrompt[] = [
   {
-    label: "Analyser une VSM",
-    prompt: "Analyse ce process VSM et identifie les goulots d'étranglement.",
+    label: "Analyse cette VSM",
+    prompt: "Analyse ce Value Stream Mapping, calcule l'efficience et identifie les goulots d'étranglement.",
     icon: "lightbulb",
   },
   {
-    label: "Calculer VA / BVA / NVA",
-    prompt: "Calcule la répartition des temps de valeur ajoutée, BVA et NVA.",
+    label: "Analyse ce Processus",
+    prompt: "Lance l'analyse détaillée de ce processus.",
     icon: "star",
   },
-  {
-    label: "Proposer une amélioration TO-BE",
-    prompt: "Propose une version optimisée du process avec les gains attendus.",
-    icon: "star",
-  },  
-  // ✏️ Placeholder du champ d’entrée
-export const PLACEHOLDER_INPUT = "Explique-moi ton process Lean...";
+  ];
+
+// ✏️ Placeholder du champ d’entrée
+export const PLACEHOLDER_INPUT = "🚀 Quel flux OrIA doit-elle optimiser.";
 
 // 👋 Message de bienvenue
-export const GREETING = "👋 Bonjour, je suis OrIA – ton copilote Lean IA.";
-export function getThemeConfig()
+export const GREETING = " Que souhaitez-vous qu’OrIA éclaire aujourd’hui ? ✨";
 
-const options: ChatKitOptions = {
-  api: {
-    // TODO: configure your ChatKit API integration (URL, auth, uploads).
-  },
- 
+// 🎨 Thème visuel OrIA (cyan, clair/sombre dynamique)
+export const getThemeConfig = (theme: ColorScheme): ThemeOption => ({
   theme: {
     colorScheme: 'light',
     radius: 'pill',
@@ -45,25 +40,16 @@ const options: ChatKitOptions = {
       surface: {
         background: '#fcfcfc',
         foreground: '#f2f2f2'
-      }
-    },
-    typography: {
-      baseSize: 16,
-      fontFamily: '"OpenAI Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif',
-      fontFamilyMono: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "DejaVu Sans Mono", "Courier New", monospace',
-      fontSources: [
-        {
-          family: 'OpenAI Sans',
-          src: 'https://cdn.openai.com/common/fonts/openai-sans/v2/OpenAISans-Regular.woff2',
-          weight: 400,
-          style: 'normal',
-          display: 'swap'
-        }
-      // ...and 7 more font sources
-      ]
-    }
+      },
   },
-  composer: {
+  typography: {
+    baseSize: 16,
+    fontFamily:
+      '"OpenAI Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+    fontFamilyMono:
+      'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+  },
+     composer: {
     placeholder: '🚀 Quel flux OrIA doit-elle optimiser ?',
     attachments: {
       enabled: true,
@@ -96,4 +82,4 @@ const options: ChatKitOptions = {
     prompts: [],
   },
   // Optional fields not shown: locale, initialThread, threadItemActions, header, onClientTool, entities, widgets
-};
+});
