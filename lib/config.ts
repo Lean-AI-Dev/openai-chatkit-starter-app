@@ -37,7 +37,7 @@ export const getThemeConfig = (theme: ColorScheme): ThemeOption => ({
     grayscale: {
       hue: 194, // teinte bleu-vert
       tint: 5,
-      shade: theme === "dark" ? -2 : -5,
+      shade: theme === "dark" ? -2 : -4,
     },
     accent: {
       primary: "#00FFFF", // cyan OrIA
