@@ -20,7 +20,7 @@ export default function App() {
   }, []);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between bg-slate-100 dark:bg-slate-950 py-8">
+    <main className="flex min-h-screen flex-col items-end justify-between bg-slate-100 dark:bg-slate-950 py-8">
       {/* --- HEADER LOGO ORIA --- */}
       <header className="flex flex-col items-center justify-center mb-6">
         <img
@@ -31,7 +31,7 @@ export default function App() {
       </header>
 
       {/* --- CHATBOT PANEL --- */}
-      <div className="mx-auto w-full max-w-5xl">
+      <div className="mx-auto w-3xl max-w-5xl">
         <ChatKitPanel
           theme={scheme}
           onWidgetAction={handleWidgetAction}
