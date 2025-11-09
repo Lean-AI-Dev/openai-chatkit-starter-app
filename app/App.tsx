@@ -3,9 +3,35 @@
 import { useCallback, useState } from "react";
 import { ChatKitPanel, type FactAction } from "@/components/ChatKitPanel";
 import { useColorScheme } from "@/hooks/useColorScheme";
+import { LeftPanel } from "@/components/LeftPanel";
+import { ToolsState } from "./tools";
 
 export default function App() {
   const { scheme, setScheme } = useColorScheme();
+  const [toolsState, setToolsState] = useState<ToolsState>({});
+
+  const updateToolsState = (updatedTools: Partial<ToolsState>) => {
+    console.log("Update tools state : ", updatedTools);
+    console.log("New value ", {
+      ...toolsState,
+      ...updatedTools,
+      ...{
+        graphs: [
+          ...(toolsState.graphs ? toolsState.graphs : []),
+          ...(updatedTools.graphs ? updatedTools.graphs : []),
+        ],
+      },
+    });
+
+    setToolsState({
+      ...toolsState,
+      ...updatedTools,
+      graphs: [
+        ...(toolsState.graphs ? toolsState.graphs : []),
+        ...(updatedTools.graphs ? updatedTools.graphs : []),
+      ],
+    });
+  };
 
   const handleWidgetAction = useCallback(async (action: FactAction) => {
     if (process.env.NODE_ENV !== "production") {
@@ -19,129 +45,33 @@ export default function App() {
     }
   }, []);
 
-  const [leftView, setLeftView] = useState<"infos" | "prompts" | "history">(
-    "infos"
-  );
-
   return (
-    <main className="min-h-screen bg-slate-100 dark:bg-slate-950 py-8">
-
-      {/* --- MOBILE FALLBACK (optional, like chatkit.world) --- */}
-      <div className="md:hidden flex items-center justify-center px-6">
-        <div className="text-center max-w-md text-slate-700 dark:text-slate-300">
-          <p className="text-base font-medium mb-2">Best experienced on desktop</p>
-          <p className="text-sm opacity-80">
-            Please open this page on a larger screen to use the side-by-side
-            chat and panel layout.
-          </p>
-        </div>
-      </div>
-
+    <main className="h-dvh bg-slate-100 dark:bg-slate-950 flex flex-col">
       {/* --- LAYOUT: LEFT (dynamic) / RIGHT (chat) --- */}
-      <div className="mx-auto w-full max-w-[1600px] px-4">
-        <div className="hidden md:grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_840px]">
+      <div className="mx-auto w-full max-w-[1600px] px-4 h-full flex flex-col">
+        <div className="flex items-center justify-center py-4">
+          <img
+            src="/orIA-logo.png"
+            alt="Logo OrIA"
+            className="h-20 w-20 rounded-full shadow-md"
+          />
+        </div>
+        <div className="flex gap-4 h-full">
+          <LeftPanel toolsState={toolsState}></LeftPanel>
           {/* Left dynamic frame */}
-          <aside className="lg:sticky lg:top-4 lg:max-h-[calc(100vh-6rem)] lg:overflow-auto">
-            <div className="rounded-xl border border-slate-200/60 dark:border-slate-800/60 bg-white dark:bg-slate-900 shadow-sm">
-              <div className="px-4 pt-4">
-                <nav className="inline-flex rounded-lg bg-slate-100 dark:bg-slate-800 p-1 text-sm">
-                  <button
-                    className={`px-3 py-1.5 rounded-md transition-colors ${
-                      leftView === "infos"
-                        ? "bg-white dark:bg-slate-700 shadow"
-                        : "text-slate-600 dark:text-slate-300"
-                    }`}
-                    onClick={() => setLeftView("infos")}
-                  >
-                    Infos
-                  </button>
-                  <button
-                    className={`px-3 py-1.5 rounded-md transition-colors ${
-                      leftView === "prompts"
-                        ? "bg-white dark:bg-slate-700 shadow"
-                        : "text-slate-600 dark:text-slate-300"
-                    }`}
-                    onClick={() => setLeftView("prompts")}
-                  >
-                    Prompts
-                  </button>
-                  <button
-                    className={`px-3 py-1.5 rounded-md transition-colors ${
-                      leftView === "history"
-                        ? "bg-white dark:bg-slate-700 shadow"
-                        : "text-slate-600 dark:text-slate-300"
-                    }`}
-                    onClick={() => setLeftView("history")}
-                  >
-                    History
-                  </button>
-                </nav>
-              </div>
-              <div className="p-4 border-t border-slate-200/60 dark:border-slate-800/60">
-                {leftView === "infos" && (
-                  <div className="space-y-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
-                    <p>
-                      Welcome to OrIA. Use the right panel to chat. This left
-                      panel is dynamic: show info, shortcuts, or docs.
-                    </p>
-                    <ul className="list-disc pl-5 space-y-1">
-                      <li>Getting started and best practices</li>
-                      <li>Useful internal links and docs</li>
-                      <li>Key metrics and KPIs</li>
-                    </ul>
-                  </div>
-                )}
-                {leftView === "prompts" && (
-                  <div className="space-y-2 text-sm">
-                    <p className="text-slate-700 dark:text-slate-300">
-                      Example prompts to kick off:
-                    </p>
-                    <ul className="list-disc pl-5 space-y-1 text-slate-800 dark:text-slate-200">
-                      <li>Analyze a VSM and identify bottlenecks</li>
-                      <li>Optimize a process: wastes and Lean actions</li>
-                    </ul>
-                    <p className="text-xs text-slate-500">
-                      Tip: these are also available in the widget start screen.
-                    </p>
-                  </div>
-                )}
-                {leftView === "history" && (
-                  <div className="text-sm text-slate-700 dark:text-slate-300">
-                    <p>Local history (example). Show recent or pinned threads.</p>
-                    <div className="mt-2 space-y-1">
-                      <div className="rounded-md bg-slate-100 dark:bg-slate-800 px-3 py-2">
-                        VSM - Assembly Line A
-                      </div>
-                      <div className="rounded-md bg-slate-100 dark:bg-slate-800 px-3 py-2">
-                        Process improvement - Receiving
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-          </aside>
 
           {/* Right chat frame with centered logo above */}
-          <section className="flex flex-col gap-3">
-            <div className="flex items-center justify-center">
-              <img
-                src="/orIA-logo.png"
-                alt="Logo OrIA"
-                className="h-20 w-20 rounded-full shadow-md"
-              />
-            </div>
-            <div className="lg:sticky lg:top-4">
-              <div className="rounded-xl border border-slate-200/60 dark:border-slate-800/60 bg-white dark:bg-slate-900 shadow-sm p-2 flex h-[calc(100vh-6rem)] overflow-hidden">
-                <ChatKitPanel
-                  theme={scheme}
-                  onWidgetAction={handleWidgetAction}
-                  onResponseEnd={handleResponseEnd}
-                  onThemeRequest={setScheme}
-                />
-              </div>
-            </div>
-          </section>
+          {/*<section className="w-full">*/}
+          <div className="w-full mb-4 rounded-xl border border-slate-200/60 dark:border-slate-800/60 bg-white dark:bg-slate-900 shadow-sm flex overflow-hidden">
+            <ChatKitPanel
+              updateToolsState={updateToolsState}
+              theme={scheme}
+              onWidgetAction={handleWidgetAction}
+              onResponseEnd={handleResponseEnd}
+              onThemeRequest={setScheme}
+            />
+          </div>
+          {/*</section>*/}
         </div>
       </div>
     </main>
