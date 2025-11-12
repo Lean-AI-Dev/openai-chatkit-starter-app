@@ -8,7 +8,7 @@ import { ToolsState } from "./tools";
 
 export default function App() {
   const { scheme, setScheme } = useColorScheme();
-  const [toolsState, setToolsState] = useState<ToolsState>({});
+  const [toolsState, setToolsState] = useState<ToolsState>({ pages: [] });
 
   const updateToolsState = (updatedTools: Partial<ToolsState>) => {
     console.log("Update tools state : ", updatedTools);
@@ -21,6 +21,12 @@ export default function App() {
           ...(updatedTools.graphs ? updatedTools.graphs : []),
         ],
       },
+      ...{
+        pages: [
+          ...(toolsState.pages ? toolsState.pages : []),
+          ...(updatedTools.pages ? updatedTools.pages : []),
+        ],
+      },
     });
 
     setToolsState({
@@ -30,6 +36,12 @@ export default function App() {
         ...(toolsState.graphs ? toolsState.graphs : []),
         ...(updatedTools.graphs ? updatedTools.graphs : []),
       ],
+      ...{
+        pages: [
+          ...(toolsState.pages ? toolsState.pages : []),
+          ...(updatedTools.pages ? updatedTools.pages : []),
+        ],
+      },
     });
   };
 

@@ -25,5 +25,9 @@ export type ToolsState = {
     summary: string;
     tasks: string[];
   };
+  pages: {
+    name: string;
+    content: string;
+  }[];
   graphs?: (BarChart | DonutChart)[];
 };

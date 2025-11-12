@@ -314,6 +314,12 @@ export function ChatKitPanel({
           graphs: [{ type: "donut", ...invocation.params }],
         } as ToolsState);
         return { success: true };
+      } else if (invocation.name === "page") {
+        console.log("page", invocation.params);
+        updateToolsState({
+          pages: [invocation.params],
+        } as ToolsState);
+        return { success: true };
       }
 
       if (invocation.name === "record_fact") {
