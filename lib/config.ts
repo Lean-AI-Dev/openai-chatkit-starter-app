@@ -26,7 +26,7 @@ export const STARTER_PROMPTS: StartScreenPrompt[] = [
 export const PLACEHOLDER_INPUT = "🚀 Quel flux OrIA doit-elle optimiser ?";
 
 // 👋 Message de bienvenue
-export const GREETING = "Que souhaitez-vous qu’OrIA éclaire aujourd’hui ? ✨";
+export const GREETING = "Quel process OrIA éclaire aujourd’hui ? ✨";
 
 // 🎨 Thème visuel OrIA (compatible ChatKit)
 export const getThemeConfig = (theme: ColorScheme): ThemeOption => ({
@@ -39,7 +39,7 @@ export const getThemeConfig = (theme: ColorScheme): ThemeOption => ({
       level: 1,
     },
     surface: {
-      background: "#fcfcfc",
+      background: "#D1E5F4",
       foreground: "#e6e6e6",
     },
     grayscale: {
