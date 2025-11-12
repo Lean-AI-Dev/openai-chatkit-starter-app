@@ -39,8 +39,8 @@ export const getThemeConfig = (theme: ColorScheme): ThemeOption => ({
       level: 1,
     },
     surface: {
-      background: "#D1E5F4",
-      foreground: "#e6e6e6",
+      background: theme === "dark" ? "#0f172b" : "#D1E5F4",
+      foreground: theme === "dark" ? "#0f172b" : "#e6e6e6",
     },
     grayscale: {
       hue: 220,

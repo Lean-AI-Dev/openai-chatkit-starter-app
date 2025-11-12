@@ -12,6 +12,7 @@ import {
 } from "@/lib/config";
 import { ErrorOverlay } from "./ErrorOverlay";
 import type { ColorScheme } from "@/hooks/useColorScheme";
+import { ToolsState } from "@/app/tools";
 
 export type FactAction = {
   type: "save";
@@ -24,6 +25,7 @@ type ChatKitPanelProps = {
   onWidgetAction: (action: FactAction) => Promise<void>;
   onResponseEnd: () => void;
   onThemeRequest: (scheme: ColorScheme) => void;
+  updateToolsState: (param: Partial<ToolsState>) => void;
 };
 
 type ErrorState = {
@@ -48,6 +50,7 @@ export function ChatKitPanel({
   onWidgetAction,
   onResponseEnd,
   onThemeRequest,
+  updateToolsState,
 }: ChatKitPanelProps) {
   const processedFacts = useRef(new Set<string>());
   const [errors, setErrors] = useState<ErrorState>(() => createInitialErrors());
@@ -58,7 +61,7 @@ export function ChatKitPanel({
   >(() =>
     isBrowser && window.customElements?.get("openai-chatkit")
       ? "ready"
-      : "pending"
+      : "pending",
   );
   const [widgetInstanceKey, setWidgetInstanceKey] = useState(0);
 
@@ -101,7 +104,7 @@ export function ChatKitPanel({
     window.addEventListener("chatkit-script-loaded", handleLoaded);
     window.addEventListener(
       "chatkit-script-error",
-      handleError as EventListener
+      handleError as EventListener,
     );
 
     if (window.customElements?.get("openai-chatkit")) {
@@ -113,7 +116,7 @@ export function ChatKitPanel({
             new CustomEvent("chatkit-script-error", {
               detail:
                 "ChatKit web component is unavailable. Verify that the script URL is reachable.",
-            })
+            }),
           );
         }
       }, 5000);
@@ -123,7 +126,7 @@ export function ChatKitPanel({
       window.removeEventListener("chatkit-script-loaded", handleLoaded);
       window.removeEventListener(
         "chatkit-script-error",
-        handleError as EventListener
+        handleError as EventListener,
       );
       if (timeoutId) {
         window.clearTimeout(timeoutId);
@@ -132,7 +135,7 @@ export function ChatKitPanel({
   }, [scriptStatus, setErrorState]);
 
   const isWorkflowConfigured = Boolean(
-    WORKFLOW_ID && !WORKFLOW_ID.startsWith("wf_replace")
+    WORKFLOW_ID && !WORKFLOW_ID.startsWith("wf_replace"),
   );
 
   useEffect(() => {
@@ -149,7 +152,7 @@ export function ChatKitPanel({
     processedFacts.current.clear();
     if (isBrowser) {
       setScriptStatus(
-        window.customElements?.get("openai-chatkit") ? "ready" : "pending"
+        window.customElements?.get("openai-chatkit") ? "ready" : "pending",
       );
     }
     setIsInitializingSession(true);
@@ -218,7 +221,7 @@ export function ChatKitPanel({
           } catch (parseError) {
             console.error(
               "Failed to parse create-session response",
-              parseError
+              parseError,
             );
           }
         }
@@ -258,7 +261,7 @@ export function ChatKitPanel({
         }
       }
     },
-    [isWorkflowConfigured, setErrorState]
+    [isWorkflowConfigured, setErrorState],
   );
 
   const chatkit = useChatKit({
@@ -295,6 +298,22 @@ export function ChatKitPanel({
           return { success: true };
         }
         return { success: false };
+      } else if (invocation.name === "summary") {
+        console.log("Summary", invocation);
+        updateToolsState({ summary: invocation.params } as ToolsState);
+        return { success: true };
+      } else if (invocation.name === "create_bar_chart") {
+        console.log("Bar Chart", invocation.params);
+        updateToolsState({
+          graphs: [{ type: "bar", ...invocation.params }],
+        } as ToolsState);
+        return { success: true };
+      } else if (invocation.name === "create_donut_chart") {
+        console.log("Donut", invocation.params);
+        updateToolsState({
+          graphs: [{ type: "donut", ...invocation.params }],
+        } as ToolsState);
+        return { success: true };
       }
 
       if (invocation.name === "record_fact") {
@@ -344,7 +363,7 @@ export function ChatKitPanel({
   }
 
   return (
-    <div className="relative pb-8 flex h-[90vh] w-full rounded-2xl flex-col overflow-hidden bg-white shadow-sm transition-colors dark:bg-slate-900">
+    <div className="relative pb-8 flex h-full w-full rounded-2xl flex-col overflow-hidden bg-white  shadow-sm transition-colors dark:bg-slate-900">
       <ChatKit
         key={widgetInstanceKey}
         control={chatkit.control}
@@ -370,7 +389,7 @@ export function ChatKitPanel({
 
 function extractErrorDetail(
   payload: Record<string, unknown> | undefined,
-  fallback: string
+  fallback: string,
 ): string {
   if (!payload) {
     return fallback;

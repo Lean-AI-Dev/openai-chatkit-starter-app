@@ -30,8 +30,6 @@ cp .env.example .env.local
 
 You can get your workflow id from the [Agent Builder](https://platform.openai.com/agent-builder) interface, after clicking "Publish":
 
-<img src="./public/docs/workflow.jpg" width=500 />
-
 You can get your OpenAI API key from the [OpenAI API Keys](https://platform.openai.com/api-keys) page.
 
 ### 3. Configure ChatKit credentials
