@@ -9,8 +9,12 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@next/swc-wasm-nodejs": "^16.0.3",
+    "@next/swc-wasm-web": "^16.0.3",
+    "@next/swc-win32-x64-msvc": "^16.0.3",
     "@openai/chatkit-react": ">=1.1.1 <2.0.0",
     "chart.js": "^4.5.1",
+    "lightningcss": "^1.30.2",
     "next": "^15.5.4",
     "react": "^19.2.0",
     "react-chartjs-2": "^5.3.1",

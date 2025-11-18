@@ -41,7 +41,20 @@ export default function App() {
 
   return ( <main className="h-dvh bg-gradient-to-b from-[#C7D2E2] to-[#7E8FA3]">
      {/* --- LAYOUT: LEFT (dynamic) / RIGHT (chat) --- */} 
-     <div className="mx-auto w-full max-w-[1600px] px-4 h-full flex flex-col">
+    <div
+  className="
+    mx-auto w-full 
+    px-6               /* marges latérales plus grandes */
+    max-w-full 
+    md:max-w-[1100px]  /* laptop */
+    lg:max-w-[1350px]  /* desktop 24” */
+    xl:max-w-[1500px]  /* large screen */
+    2xl:max-w-[1650px] /* ultrawide 34” */
+    h-full flex flex-col
+  "
+>
+
+
        <div className="flex items-center justify-center py-4"> 
         <video src="/Oria_Logo.webm" 
         autoPlay loop muted playsInline className="h-20 w-20 rounded-full shadow-md object-cover" />
