@@ -17,7 +17,7 @@ export const STARTER_PROMPTS: StartScreenPrompt[] = [
   {
     label: "Optimiser un processus",
     prompt:
-      "Identifie les gaspillages et propose des actions Lean pour améliorer le flux.",
+      "Analyse ce process avec Lean 6 sigma et TOC",
     icon: "bolt", // 🟢 icône valide (ChatKitIcon)
   },
 ];
